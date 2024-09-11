@@ -37,14 +37,22 @@ export const CoreUtil = {
   },
 
   formatNativeUrl(appUrl: string, wcUri: string, name: string): string {
-    if (CoreUtil.isHttpUrl(appUrl)) {
-      return this.formatUniversalUrl(appUrl, wcUri, name)
-    }
+    // if (CoreUtil.isHttpUrl(appUrl)) {
+    //   return this.formatUniversalUrl(appUrl, wcUri, name)
+    // }
+    // let safeAppUrl = appUrl
+    // if (!safeAppUrl.includes('://')) {
+    //   safeAppUrl = appUrl.replaceAll('/', '').replaceAll(':', '')
+    //   safeAppUrl = `${safeAppUrl}://`
+    // }
+    // if (!safeAppUrl.endsWith('/')) {
+    //   safeAppUrl = `${safeAppUrl}/`
+    // }
+    // this.setWalletConnectDeepLink(safeAppUrl, name)
+    // const encodedWcUrl = encodeURIComponent(wcUri)
+
+    // return `${safeAppUrl}wc?uri=${encodedWcUrl}`
     let safeAppUrl = appUrl
-    if (!safeAppUrl.includes('://')) {
-      safeAppUrl = appUrl.replaceAll('/', '').replaceAll(':', '')
-      safeAppUrl = `${safeAppUrl}://`
-    }
     if (!safeAppUrl.endsWith('/')) {
       safeAppUrl = `${safeAppUrl}/`
     }
@@ -55,9 +63,9 @@ export const CoreUtil = {
   },
 
   formatUniversalUrl(appUrl: string, wcUri: string, name: string): string {
-    if (!CoreUtil.isHttpUrl(appUrl)) {
-      return this.formatNativeUrl(appUrl, wcUri, name)
-    }
+    // if (!CoreUtil.isHttpUrl(appUrl)) {
+    //   return this.formatNativeUrl(appUrl, wcUri, name)
+    // }
     let safeAppUrl = appUrl
     if (!safeAppUrl.endsWith('/')) {
       safeAppUrl = `${safeAppUrl}/`
@@ -74,8 +82,8 @@ export const CoreUtil = {
     })
   },
 
-  openHref(href: string, target: '_blank' | '_self') {
-    window.open(href, target, 'noreferrer noopener')
+  openHref(href: string, _: string) {
+    window.open(href, '_blank', 'noreferrer noopener')
   },
 
   setWalletConnectDeepLink(href: string, name: string) {
